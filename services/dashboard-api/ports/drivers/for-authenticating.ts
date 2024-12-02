@@ -1,4 +1,4 @@
-export interface AuthentictedUser {
+export interface AuthenticatedUser {
   id: string;
   email: string;
   name: string;
@@ -6,12 +6,9 @@ export interface AuthentictedUser {
   refreshToken: string;
 }
 
-export type User = Pick<AuthentictedUser, "email" | "name">;
+export type User = Pick<AuthenticatedUser, "email" | "name">;
 
 export interface ForAuthenticating {
-  login: (email: string, password: string) => Promise<AuthentictedUser>;
-  registere: (
-    user: UserActivation,
-    password: string
-  ) => Promise<AuthentictedUser>;
+  login: (email: string, password: string) => Promise<AuthenticatedUser>;
+  register: (user: User, password: string) => Promise<AuthenticatedUser>;
 }
